@@ -1,4 +1,6 @@
 package com.myapp.fresquita.presentation.screens
 
-class HomeUiState {
-}
+data class HomeUiState(
+    val availableCount: Int = 0,
+    val expiringSoonCount: Int = 0
+)

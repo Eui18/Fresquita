@@ -1,5 +1,8 @@
 package com.myapp.fresquita.data.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Food(
     val id: String,
     val name: String,

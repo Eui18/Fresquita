@@ -1,7 +1,8 @@
 package com.myapp.fresquita.data.repository
 
 import com.myapp.fresquita.data.model.Food
+import kotlinx.coroutines.flow.Flow
 
 interface FoodRepository {
-    fun getFoods(): List<Food>
+    val foods: Flow<List<Food>>
 }

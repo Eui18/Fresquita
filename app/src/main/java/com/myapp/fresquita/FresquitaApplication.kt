@@ -5,6 +5,6 @@ import com.myapp.fresquita.di.AppModule
 
 class FresquitaApplication : Application() {
     val appModule: AppModule by lazy {
-        AppModule()
+        AppModule(this)
     }
 }

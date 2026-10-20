@@ -18,8 +18,7 @@ class FoodLocalDataSource(
     private val seedLoadedKey = booleanPreferencesKey("seed_loaded")
 
     val foods: Flow<List<Food>> = dataStore.data.map { preferences ->
-        val json = preferences[foodsKey]
-        if (json == null) emptyList() else Json.decodeFromString<List<Food>>(json)
+        decodeFoods(preferences[foodsKey])
     }
 
     suspend fun isSeedLoaded(): Boolean {
@@ -31,5 +30,19 @@ class FoodLocalDataSource(
             preferences[foodsKey] = Json.encodeToString(foods)
             preferences[seedLoadedKey] = true
         }
+    }
+
+    suspend fun markAsConsumed(id: String) {
+        dataStore.edit { preferences ->
+            val currentFoods = decodeFoods(preferences[foodsKey])
+            val updatedFoods = currentFoods.map { food ->
+                if (food.id == id) food.copy(isConsumed = true) else food
+            }
+            preferences[foodsKey] = Json.encodeToString(updatedFoods)
+        }
+    }
+
+    private fun decodeFoods(json: String?): List<Food> {
+        return if (json == null) emptyList() else Json.decodeFromString<List<Food>>(json)
     }
 }

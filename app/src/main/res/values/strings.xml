@@ -4,4 +4,18 @@
     <string name="home_title">Resumen de tu despensa</string>
     <string name="home_available_label">Alimentos disponibles: %1$d</string>
     <string name="home_expiring_soon_label">Próximos a caducar: %1$d</string>
+
+    <string name="pantry_title">Mi despensa</string>
+    <string name="pantry_empty">No hay alimentos disponibles</string>
+    <string name="pantry_quantity">Cantidad: %1$s %2$s</string>
+    <string name="pantry_mark_consumed">Marcar como consumido</string>
+
+    <string name="category_fruits">Frutas</string>
+    <string name="category_vegetables">Verduras</string>
+    <string name="category_refrigerated">Refrigerados</string>
+    <string name="category_pantry">Despensa</string>
+
+    <string name="status_valid">Vigente</string>
+    <string name="status_expiring_soon">Próximo a caducar</string>
+    <string name="status_expired">Caducado</string>
 </resources>

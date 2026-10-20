@@ -9,7 +9,7 @@ import com.myapp.fresquita.FresquitaApplication
 import com.myapp.fresquita.presentation.viewmodel.HomeViewModel
 
 @Composable
-fun HomePage (
+fun HomePage(
     viewModel: HomeViewModel = viewModel(
         factory = (LocalContext.current.applicationContext as FresquitaApplication)
             .appModule.homeViewModelFactory

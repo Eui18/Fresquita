@@ -9,7 +9,7 @@ import com.myapp.fresquita.presentation.viewmodel.HomeViewModelFactory
 
 class AppModule(private val context: Context) {
 
-    private val SeedDataSource: FoodSeedDataSource by lazy {
+    private val seedDataSource: FoodSeedDataSource by lazy {
         FoodSeedDataSource()
     }
 
@@ -18,7 +18,7 @@ class AppModule(private val context: Context) {
     }
 
     private val repository: FoodRepository by lazy {
-        FoodRepositoryImpl(SeedDataSource, localDataSource)
+        FoodRepositoryImpl(seedDataSource, localDataSource)
     }
 
     val homeViewModelFactory: HomeViewModelFactory by lazy {

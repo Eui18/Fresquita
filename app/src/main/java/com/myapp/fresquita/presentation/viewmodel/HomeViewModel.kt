@@ -5,14 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.repository.FoodRepository
 import com.myapp.fresquita.presentation.screens.HomeUiState
+import com.myapp.fresquita.presentation.util.ExpirationStatus
+import com.myapp.fresquita.presentation.util.getExpirationStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-
-private const val EXPIRING_SOON_DAYS = 3L
 
 class HomeViewModel(
     private val repository: FoodRepository
@@ -36,7 +36,9 @@ class HomeViewModel(
     private fun updateSummary(foods: List<Food>) {
         val availableFoods = foods.filter { !it.isConsumed }
         val today = LocalDate.now()
-        val expiringSoon = availableFoods.count { isExpiringSoon(it, today) }
+        val expiringSoon = availableFoods.count {
+            getExpirationStatus(it, today) == ExpirationStatus.EXPIRING_SOON
+        }
 
         _uiState.update {
             it.copy(
@@ -44,11 +46,5 @@ class HomeViewModel(
                 expiringSoonCount = expiringSoon
             )
         }
-    }
-
-    private fun isExpiringSoon(food: Food, today: LocalDate): Boolean {
-        val expirationDate = food.expirationDate?.let { LocalDate.parse(it) } ?: return false
-        val limit = today.plusDays(EXPIRING_SOON_DAYS)
-        return !expirationDate.isBefore(today) && !expirationDate.isAfter(limit)
     }
 }

@@ -11,11 +11,11 @@ class FoodRepositoryImpl(
     private val localDataSource: FoodLocalDataSource
 ) : FoodRepository {
 
-    override val foods: Flow<List<Food>> = localDataSource.foods.onStart{
-        loadSeedIfNeed()
+    override val foods: Flow<List<Food>> = localDataSource.foods.onStart {
+        loadSeedIfNeeded()
     }
 
-    private suspend fun loadSeedIfNeed() {
+    private suspend fun loadSeedIfNeeded() {
         if (!localDataSource.isSeedLoaded()) {
             localDataSource.saveInitialFoods(seedDataSource.getFoods())
         }

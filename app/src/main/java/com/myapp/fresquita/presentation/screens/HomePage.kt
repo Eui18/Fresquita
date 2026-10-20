@@ -10,12 +10,16 @@ import com.myapp.fresquita.presentation.viewmodel.HomeViewModel
 
 @Composable
 fun HomePage(
+    onOpenPantry: () -> Unit,
     viewModel: HomeViewModel = viewModel(
         factory = (LocalContext.current.applicationContext as FresquitaApplication)
             .appModule.homeViewModelFactory
     )
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    HomeContent(uiState = uiState)
+    HomeContent(
+        uiState = uiState,
+        onOpenPantry = onOpenPantry
+    )
 
 }

@@ -4,6 +4,7 @@
     <string name="home_title">Resumen de tu despensa</string>
     <string name="home_available_label">Alimentos disponibles: %1$d</string>
     <string name="home_expiring_soon_label">Próximos a caducar: %1$d</string>
+    <string name="home_open_pantry">Ver mi despensa</string>
 
     <string name="pantry_title">Mi despensa</string>
     <string name="pantry_empty">No hay alimentos disponibles</string>

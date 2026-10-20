@@ -19,6 +19,10 @@ class FoodRepositoryImpl(
         localDataSource.markAsConsumed(id)
     }
 
+    override suspend fun addFood(food: Food) {
+        localDataSource.addFood(food)
+    }
+
     private suspend fun loadSeedIfNeeded() {
         if (!localDataSource.isSeedLoaded()) {
             localDataSource.saveInitialFoods(seedDataSource.getFoods())

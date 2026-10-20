@@ -42,6 +42,13 @@ class FoodLocalDataSource(
         }
     }
 
+    suspend fun addFood(food: Food) {
+        dataStore.edit { preferences ->
+            val currentFoods = decodeFoods(preferences[foodsKey])
+            preferences[foodsKey] = Json.encodeToString(currentFoods + food)
+        }
+    }
+
     private fun decodeFoods(json: String?): List<Food> {
         return if (json == null) emptyList() else Json.decodeFromString<List<Food>>(json)
     }

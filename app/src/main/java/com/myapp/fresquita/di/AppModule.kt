@@ -5,6 +5,7 @@ import com.myapp.fresquita.data.datasource.FoodLocalDataSource
 import com.myapp.fresquita.data.datasource.FoodSeedDataSource
 import com.myapp.fresquita.data.repository.FoodRepository
 import com.myapp.fresquita.data.repository.FoodRepositoryImpl
+import com.myapp.fresquita.presentation.viewmodel.FoodFormViewModelFactory
 import com.myapp.fresquita.presentation.viewmodel.HomeViewModelFactory
 import com.myapp.fresquita.presentation.viewmodel.PantryViewModelFactory
 
@@ -28,5 +29,9 @@ class AppModule(private val context: Context) {
 
     val pantryViewModelFactory: PantryViewModelFactory by lazy {
         PantryViewModelFactory(repository)
+    }
+
+    val foodFormViewModelFactory: FoodFormViewModelFactory by lazy {
+        FoodFormViewModelFactory(repository)
     }
 }

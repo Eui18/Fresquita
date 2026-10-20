@@ -11,9 +11,9 @@ import com.myapp.fresquita.presentation.screens.PantryPage
 
 @Composable
 fun FresquitaApp() {
-    var  currentScreen by rememberSaveable { mutableStateOf(AppScreen.HOME) }
+    var currentScreen by rememberSaveable { mutableStateOf(AppScreen.HOME) }
 
-    BackHandler (enabled = currentScreen != AppScreen.HOME) {
+    BackHandler(enabled = currentScreen != AppScreen.HOME) {
         currentScreen = AppScreen.HOME
     }
 

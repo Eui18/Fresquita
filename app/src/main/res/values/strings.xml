@@ -40,7 +40,6 @@
     <string name="form_save">Guardar</string>
     <string name="form_cancel">Cancelar</string>
 
-    <string name="pantry_filter_all">Todos</string>
     <string name="pantry_edit">Editar</string>
     <string name="pantry_delete">Eliminar</string>
     <string name="pantry_delete_title">Eliminar alimento</string>

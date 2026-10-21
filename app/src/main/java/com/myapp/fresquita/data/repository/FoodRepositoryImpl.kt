@@ -23,6 +23,18 @@ class FoodRepositoryImpl(
         localDataSource.addFood(food)
     }
 
+    override suspend fun deleteFood(id: String) {
+        localDataSource.deleteFood(id)
+    }
+
+    override suspend fun updateFood(food: Food) {
+        localDataSource.updateFood(food)
+    }
+
+    override suspend fun getFoodById(id: String): Food? {
+        return localDataSource.getFoodById(id)
+    }
+
     private suspend fun loadSeedIfNeeded() {
         if (!localDataSource.isSeedLoaded()) {
             localDataSource.saveInitialFoods(seedDataSource.getFoods())

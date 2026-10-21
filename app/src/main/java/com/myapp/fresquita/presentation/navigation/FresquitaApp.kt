@@ -13,6 +13,7 @@ import com.myapp.fresquita.presentation.pantry.screen.PantryPage
 @Composable
 fun FresquitaApp() {
     var currentScreen by rememberSaveable { mutableStateOf(AppScreen.HOME) }
+    var editingFoodId by rememberSaveable { mutableStateOf<String?>(null)}
 
     BackHandler(enabled = currentScreen != AppScreen.HOME) {
         currentScreen = if (currentScreen == AppScreen.FORM) AppScreen.PANTRY else AppScreen.HOME
@@ -22,12 +23,17 @@ fun FresquitaApp() {
         AppScreen.HOME -> HomePage(
             onOpenPantry = { currentScreen = AppScreen.PANTRY }
         )
+
         AppScreen.PANTRY -> PantryPage(
-            onAddFood = { currentScreen = AppScreen.FORM }
+            onAddFood = {
+                editingFoodId = null
+                currentScreen = AppScreen.FORM
+            }
         )
 
         AppScreen.FORM -> FoodFormPage(
-            onFinished = { currentScreen = AppScreen.PANTRY }
+            foodId = editingFoodId,
+            onFinished = { currentScreen = AppScreen.PANTRY}
         )
     }
 }

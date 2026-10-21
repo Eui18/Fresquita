@@ -3,6 +3,7 @@ package com.myapp.fresquita.presentation.form.state
 import com.myapp.fresquita.data.model.FoodCategory
 
 data class FoodFormUiState(
+    val editingId: String? = null,
     val name: String = "",
     val category: FoodCategory = FoodCategory.FRUITS,
     val quantity: String = "",

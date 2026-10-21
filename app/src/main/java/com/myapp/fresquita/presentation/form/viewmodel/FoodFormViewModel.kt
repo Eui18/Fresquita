@@ -6,6 +6,7 @@ import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.model.FoodCategory
 import com.myapp.fresquita.data.model.GENERIC_ILLUSTRATION_KEY
 import com.myapp.fresquita.data.repository.FoodRepository
+import com.myapp.fresquita.presentation.common.formatQuantity
 import com.myapp.fresquita.presentation.form.state.FoodFormUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -66,7 +67,11 @@ class FoodFormViewModel(
         val food = createFood(state, quantity)
 
         viewModelScope.launch {
-            repository.addFood(food)
+            if (state.editingId == null) {
+                repository.addFood(food)
+            } else {
+                repository.updateFood(food)
+            }
             _uiState.update { it.copy(isSaved = true) }
         }
     }
@@ -75,13 +80,34 @@ class FoodFormViewModel(
         _uiState.update { FoodFormUiState() }
     }
 
+    fun loadFood(id: String?) {
+        if (id == null) {
+            return
+        }
+        viewModelScope.launch {
+            val food = repository.getFoodById(id)
+            if (food != null) {
+                _uiState.update {
+                    FoodFormUiState(
+                        editingId = food.id,
+                        name = food.name,
+                        category = food.category,
+                        quantity = formatQuantity(food.quantity),
+                        unit = food.unit,
+                        expirationDate = food.expirationDate ?: ""
+                    )
+                }
+            }
+        }
+    }
+
     private fun isValidDate(date: String): Boolean {
         return runCatching { LocalDate.parse(date) }.isSuccess
     }
 
     private fun createFood(state: FoodFormUiState, quantity: Double): Food {
         return Food(
-            id = UUID.randomUUID().toString(),
+            id = state.editingId ?: UUID.randomUUID().toString(),
             name = state.name.trim(),
             category = state.category,
             quantity = quantity,

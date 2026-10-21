@@ -49,6 +49,29 @@ class FoodLocalDataSource(
         }
     }
 
+    suspend fun deleteFood(id: String) {
+        dataStore.edit { preferences ->
+            val currentFoods = decodeFoods(preferences[foodsKey])
+            val updatedFoods = currentFoods.filter { food -> food.id != id }
+            preferences[foodsKey] = Json.encodeToString(updatedFoods)
+        }
+    }
+
+    suspend fun updateFood(updatedFood: Food) {
+        dataStore.edit { preferences ->
+            val currentFoods = decodeFoods(preferences[foodsKey])
+            val updatedFoods = currentFoods.map { food ->
+                if (food.id == updatedFood.id) updatedFood else food
+            }
+            preferences[foodsKey] = Json.encodeToString(updatedFoods)
+        }
+    }
+
+    suspend fun getFoodById(id: String): Food? {
+        val currentFoods = foods.first()
+        return currentFoods.find { food -> food.id == id }
+    }
+
     private fun decodeFoods(json: String?): List<Food> {
         return if (json == null) emptyList() else Json.decodeFromString<List<Food>>(json)
     }

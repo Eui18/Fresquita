@@ -3,6 +3,7 @@ package com.myapp.fresquita.presentation.pantry.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myapp.fresquita.data.model.Food
+import com.myapp.fresquita.data.model.FoodCategory
 import com.myapp.fresquita.data.repository.FoodRepository
 import com.myapp.fresquita.presentation.common.formatQuantity
 import com.myapp.fresquita.presentation.common.getCategoryText
@@ -24,8 +25,14 @@ class PantryViewModel(
     private val _uiState = MutableStateFlow(PantryUiState())
     val uiState: StateFlow<PantryUiState> = _uiState.asStateFlow()
 
+    private var allFoods: List<Food> = emptyList()
     init {
         observeFoods()
+    }
+
+    fun onCategorySelected(category: FoodCategory?) {
+        _uiState.update { it.copy(selectedCategory = category) }
+        updateItems()
     }
 
     fun markAsConsumed(id: String) {
@@ -34,18 +41,39 @@ class PantryViewModel(
         }
     }
 
-    private fun observeFoods() {
-        viewModelScope.launch {
-            repository.foods.collect { foods ->
-                updateItems(foods)
+    fun onDeleteRequest(id: String) {
+        _uiState.update { it.copy(foodToDeleteId = id) }
+    }
+
+    fun onDeleteCancel() {
+        _uiState.update { it.copy(foodToDeleteId = null) }
+    }
+
+    fun onDeleteConfirm() {
+        val id = _uiState.value.foodToDeleteId
+        if (id != null) {
+            viewModelScope.launch {
+                repository.deleteFood(id)
+                _uiState.update { it.copy(foodToDeleteId = null) }
             }
         }
     }
 
-    private fun updateItems(foods: List<Food>) {
+    private fun observeFoods() {
+        viewModelScope.launch {
+            repository.foods.collect { foods ->
+                allFoods = foods
+                updateItems()
+            }
+        }
+    }
+
+    private fun updateItems() {
         val today = LocalDate.now()
-        val items = foods
-            .filter { !it.isConsumed }
+        val selectedCategory = _uiState.value.selectedCategory
+        val items = allFoods
+            .filter { food -> !food.isConsumed }
+            .filter { food -> selectedCategory == null || food.category == selectedCategory }
             .map { food -> createItem(food, today) }
 
         _uiState.update { it.copy(items = items) }

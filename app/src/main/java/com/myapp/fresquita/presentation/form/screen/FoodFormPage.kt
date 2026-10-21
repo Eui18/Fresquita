@@ -12,6 +12,7 @@ import com.myapp.fresquita.presentation.form.viewmodel.FoodFormViewModel
 
 @Composable
 fun FoodFormPage(
+    foodId: String?,
     onFinished: () -> Unit,
     viewModel: FoodFormViewModel = viewModel(
         factory = (LocalContext.current.applicationContext as FresquitaApplication)
@@ -19,6 +20,10 @@ fun FoodFormPage(
     )
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(foodId) {
+       viewModel.loadFood(foodId)
+    }
 
     LaunchedEffect(uiState.isSaved) {
         if (uiState.isSaved) {

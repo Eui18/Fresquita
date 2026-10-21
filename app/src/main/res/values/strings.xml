@@ -39,4 +39,13 @@
     <string name="form_date_error">Escribe una fecha válida con formato AAAA-MM-DD</string>
     <string name="form_save">Guardar</string>
     <string name="form_cancel">Cancelar</string>
+
+    <string name="pantry_filter_all">Todos</string>
+    <string name="pantry_edit">Editar</string>
+    <string name="pantry_delete">Eliminar</string>
+    <string name="pantry_delete_title">Eliminar alimento</string>
+    <string name="pantry_delete_message">¿Seguro que quieres eliminarlo?</string>
+    <string name="pantry_delete_confirm">Eliminar</string>
+    <string name="pantry_delete_cancel">Cancelar</string>
+    <string name="form_title_edit">Editar alimento</string>
 </resources>

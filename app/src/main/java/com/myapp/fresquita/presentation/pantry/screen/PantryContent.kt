@@ -29,10 +29,10 @@ fun PantryContent(
             Text(text = stringResource(R.string.pantry_empty))
         } else {
             LazyColumn {
-                items(uiState.items, key = { it.food.id }) { item ->
+                items(uiState.items, key = { it.id }) { item ->
                     PantryItemRow(
                         item = item,
-                        onMarkAsConsumed = { onMarkAsConsumed(item.food.id) }
+                        onMarkAsConsumed = { onMarkAsConsumed(item.id) }
                     )
                 }
             }

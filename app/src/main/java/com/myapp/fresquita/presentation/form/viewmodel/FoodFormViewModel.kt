@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.model.FoodCategory
+import com.myapp.fresquita.data.model.GENERIC_ILLUSTRATION_KEY
 import com.myapp.fresquita.data.repository.FoodRepository
 import com.myapp.fresquita.presentation.form.state.FoodFormUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,10 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.format.DateTimeParseException
 import java.util.UUID
-
-private const val GENERIC_ILLUSTRATION = "generic"
 
 class FoodFormViewModel(
     private val repository: FoodRepository
@@ -78,12 +76,7 @@ class FoodFormViewModel(
     }
 
     private fun isValidDate(date: String): Boolean {
-        return try {
-            LocalDate.parse(date)
-            true
-        } catch (e: DateTimeParseException) {
-            false
-        }
+        return runCatching { LocalDate.parse(date) }.isSuccess
     }
 
     private fun createFood(state: FoodFormUiState, quantity: Double): Food {
@@ -95,7 +88,7 @@ class FoodFormViewModel(
             unit = state.unit.trim(),
             expirationDate = state.expirationDate.trim().ifBlank { null },
             isConsumed = false,
-            illustrationKey = GENERIC_ILLUSTRATION
+            illustrationKey = GENERIC_ILLUSTRATION_KEY
         )
     }
 }

@@ -2,18 +2,20 @@ package com.myapp.fresquita.data.datasource
 
 import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.model.FoodCategory
+import com.myapp.fresquita.data.model.GENERIC_ILLUSTRATION_KEY
+import java.time.LocalDate
 
 class FoodSeedDataSource {
-    private val foods = listOf(
+    fun getFoods(): List<Food> = listOf(
         Food(
             id = "seed-1",
             name = "Fresas",
             category = FoodCategory.FRUITS,
             quantity = 1.0,
             unit = "Caja",
-            expirationDate = "2026-10-14",
+            expirationDate = daysFromToday(2),
             isConsumed = false,
-            illustrationKey = "generic"
+            illustrationKey = GENERIC_ILLUSTRATION_KEY
         ),
         Food(
             id = "seed-2",
@@ -21,9 +23,9 @@ class FoodSeedDataSource {
             category = FoodCategory.FRUITS,
             quantity = 4.0,
             unit = "Piezas",
-            expirationDate = "2026-10-18",
+            expirationDate = daysFromToday(8),
             isConsumed = false,
-            illustrationKey = "generic"
+            illustrationKey = GENERIC_ILLUSTRATION_KEY
         ),
         Food(
             id = "seed-3",
@@ -31,9 +33,9 @@ class FoodSeedDataSource {
             category = FoodCategory.VEGETABLES,
             quantity = 6.0,
             unit = "Piezas",
-            expirationDate = "2026-10-16",
+            expirationDate = daysFromToday(5),
             isConsumed = false,
-            illustrationKey = "generic"
+            illustrationKey = GENERIC_ILLUSTRATION_KEY
         ),
         Food(
             id = "seed-4",
@@ -41,11 +43,12 @@ class FoodSeedDataSource {
             category = FoodCategory.REFRIGERATED,
             quantity = 1.0,
             unit = "Litro",
-            expirationDate = "2026-10-13",
+            expirationDate = daysFromToday(1),
             isConsumed = false,
-            illustrationKey = "generic"
+            illustrationKey = GENERIC_ILLUSTRATION_KEY
         )
     )
 
-    fun getFoods(): List<Food> = foods
+    private fun daysFromToday(days: Long): String =
+        LocalDate.now().plusDays(days).toString()
 }

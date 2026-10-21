@@ -1,5 +1,6 @@
 package com.myapp.fresquita.presentation.form.screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -24,6 +25,11 @@ fun FoodFormPage(
             viewModel.resetForm()
             onFinished()
         }
+    }
+
+    BackHandler {
+        viewModel.resetForm()
+        onFinished()
     }
 
     FoodFormContent(

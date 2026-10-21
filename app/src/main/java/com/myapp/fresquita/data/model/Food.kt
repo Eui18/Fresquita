@@ -2,6 +2,8 @@ package com.myapp.fresquita.data.model
 
 import kotlinx.serialization.Serializable
 
+const val GENERIC_ILLUSTRATION_KEY = "generic"
+
 @Serializable
 data class Food(
     val id: String,

@@ -4,9 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.repository.FoodRepository
-import com.myapp.fresquita.presentation.pantry.state.PantryItem
+import com.myapp.fresquita.presentation.common.formatQuantity
+import com.myapp.fresquita.presentation.common.getCategoryText
 import com.myapp.fresquita.presentation.pantry.state.PantryUiState
 import com.myapp.fresquita.presentation.common.getExpirationStatus
+import com.myapp.fresquita.presentation.common.getStatusText
+import com.myapp.fresquita.presentation.pantry.state.PantryItemUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -43,8 +46,19 @@ class PantryViewModel(
         val today = LocalDate.now()
         val items = foods
             .filter { !it.isConsumed }
-            .map { food -> PantryItem(food, getExpirationStatus(food, today)) }
+            .map { food -> createItem(food, today) }
 
         _uiState.update { it.copy(items = items) }
+    }
+
+    private fun createItem(food: Food, today: LocalDate): PantryItemUi {
+        return PantryItemUi(
+            id = food.id,
+            name = food.name,
+            quantity = formatQuantity(food.quantity),
+            unit = food.unit,
+            categoryText = getCategoryText(food.category),
+            statusText = getStatusText(getExpirationStatus(food, today))
+        )
     }
 }

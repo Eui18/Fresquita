@@ -11,13 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.myapp.fresquita.R
-import com.myapp.fresquita.presentation.common.ExpirationStatus
-import com.myapp.fresquita.presentation.common.getCategoryText
-import com.myapp.fresquita.presentation.pantry.state.PantryItem
+import com.myapp.fresquita.presentation.pantry.state.PantryItemUi
 
 @Composable
 fun PantryItemRow(
-    item: PantryItem,
+    item: PantryItemUi,
     onMarkAsConsumed: () -> Unit
 ) {
     Card(
@@ -26,33 +24,23 @@ fun PantryItemRow(
             .padding(8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = item.food.name)
+            Text(text = item.name)
             Text(
                 text = stringResource(
                     R.string.pantry_quantity,
-                    item.food.quantity,
-                    item.food.unit
+                    item.quantity,
+                    item.unit
                 )
             )
-            Text(text = stringResource(getCategoryText(item.food.category)))
+            Text(text = stringResource(item.categoryText))
 
-            val statusText = getStatusText(item.status)
-            if (statusText != null) {
-                Text(text = stringResource(statusText))
+            if (item.statusText != null) {
+                Text(text = stringResource(item.statusText))
             }
 
             Button(onClick = onMarkAsConsumed) {
                 Text(text = stringResource(R.string.pantry_mark_consumed))
             }
         }
-    }
-}
-
-private fun getStatusText(status: ExpirationStatus): Int? {
-    return when (status) {
-        ExpirationStatus.VALID -> R.string.status_valid
-        ExpirationStatus.EXPIRING_SOON -> R.string.status_expiring_soon
-        ExpirationStatus.EXPIRED -> R.string.status_expired
-        ExpirationStatus.NO_DATE -> null
     }
 }

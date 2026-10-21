@@ -1,4 +1,4 @@
-package com.myapp.fresquita.presentation.util
+package com.myapp.fresquita.presentation.common
 
 import com.myapp.fresquita.R
 import com.myapp.fresquita.data.model.FoodCategory

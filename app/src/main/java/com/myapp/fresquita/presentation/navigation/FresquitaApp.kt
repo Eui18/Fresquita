@@ -6,9 +6,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import com.myapp.fresquita.presentation.screens.FoodFormPage
-import com.myapp.fresquita.presentation.screens.HomePage
-import com.myapp.fresquita.presentation.screens.PantryPage
+import com.myapp.fresquita.presentation.form.screen.FoodFormPage
+import com.myapp.fresquita.presentation.home.screen.HomePage
+import com.myapp.fresquita.presentation.pantry.screen.PantryPage
 
 @Composable
 fun FresquitaApp() {

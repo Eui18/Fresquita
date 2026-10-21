@@ -1,7 +1,7 @@
-package com.myapp.fresquita.presentation.screens
+package com.myapp.fresquita.presentation.pantry.state
 
 import com.myapp.fresquita.data.model.Food
-import com.myapp.fresquita.presentation.util.ExpirationStatus
+import com.myapp.fresquita.presentation.common.ExpirationStatus
 
 data class PantryItem(
     val food: Food,

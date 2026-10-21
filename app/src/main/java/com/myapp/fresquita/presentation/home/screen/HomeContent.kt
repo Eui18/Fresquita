@@ -1,4 +1,4 @@
-package com.myapp.fresquita.presentation.screens
+package com.myapp.fresquita.presentation.home.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.myapp.fresquita.R
+import com.myapp.fresquita.presentation.home.state.HomeUiState
 
 @Composable
 fun HomeContent(

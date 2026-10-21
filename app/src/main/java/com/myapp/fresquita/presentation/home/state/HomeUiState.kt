@@ -1,4 +1,4 @@
-package com.myapp.fresquita.presentation.screens
+package com.myapp.fresquita.presentation.home.state
 
 data class HomeUiState(
     val availableCount: Int = 0,

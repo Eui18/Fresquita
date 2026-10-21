@@ -1,4 +1,4 @@
-package com.myapp.fresquita.presentation.components
+package com.myapp.fresquita.presentation.pantry.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.myapp.fresquita.R
-import com.myapp.fresquita.presentation.screens.PantryItem
-import com.myapp.fresquita.presentation.util.ExpirationStatus
-import com.myapp.fresquita.presentation.util.getCategoryText
+import com.myapp.fresquita.presentation.common.ExpirationStatus
+import com.myapp.fresquita.presentation.common.getCategoryText
+import com.myapp.fresquita.presentation.pantry.state.PantryItem
 
 @Composable
 fun PantryItemRow(

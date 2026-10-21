@@ -1,11 +1,11 @@
-package com.myapp.fresquita.presentation.viewmodel
+package com.myapp.fresquita.presentation.form.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.model.FoodCategory
 import com.myapp.fresquita.data.repository.FoodRepository
-import com.myapp.fresquita.presentation.screens.FoodFormUiState
+import com.myapp.fresquita.presentation.form.state.FoodFormUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

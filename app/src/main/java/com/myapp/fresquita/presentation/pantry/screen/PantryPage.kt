@@ -1,4 +1,4 @@
-package com.myapp.fresquita.presentation.screens
+package com.myapp.fresquita.presentation.pantry.screen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -6,19 +6,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.myapp.fresquita.FresquitaApplication
-import com.myapp.fresquita.presentation.viewmodel.HomeViewModel
+import com.myapp.fresquita.presentation.pantry.viewmodel.PantryViewModel
 
 @Composable
-fun HomePage(
-    onOpenPantry: () -> Unit,
-    viewModel: HomeViewModel = viewModel(
+fun PantryPage(
+    onAddFood: () -> Unit,
+    viewModel: PantryViewModel = viewModel(
         factory = (LocalContext.current.applicationContext as FresquitaApplication)
-            .appModule.homeViewModelFactory
+            .appModule.pantryViewModelFactory
     )
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    HomeContent(
+    PantryContent(
         uiState = uiState,
-        onOpenPantry = onOpenPantry
+        onMarkAsConsumed = { id -> viewModel.markAsConsumed(id) },
+        onAddFood = onAddFood
     )
 }

@@ -1,4 +1,4 @@
-package com.myapp.fresquita.presentation.screens
+package com.myapp.fresquita.presentation.form.screen
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +22,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.myapp.fresquita.R
 import com.myapp.fresquita.data.model.FoodCategory
-import com.myapp.fresquita.presentation.util.getCategoryText
+import com.myapp.fresquita.presentation.common.getCategoryText
+import com.myapp.fresquita.presentation.form.state.FoodFormUiState
 
 @Composable
 fun FoodFormContent(

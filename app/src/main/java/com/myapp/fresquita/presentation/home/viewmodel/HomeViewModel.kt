@@ -1,12 +1,12 @@
-package com.myapp.fresquita.presentation.viewmodel
+package com.myapp.fresquita.presentation.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.repository.FoodRepository
-import com.myapp.fresquita.presentation.screens.HomeUiState
-import com.myapp.fresquita.presentation.util.ExpirationStatus
-import com.myapp.fresquita.presentation.util.getExpirationStatus
+import com.myapp.fresquita.presentation.home.state.HomeUiState
+import com.myapp.fresquita.presentation.common.ExpirationStatus
+import com.myapp.fresquita.presentation.common.getExpirationStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

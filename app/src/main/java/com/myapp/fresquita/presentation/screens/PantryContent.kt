@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,10 +15,14 @@ import com.myapp.fresquita.presentation.components.PantryItemRow
 @Composable
 fun PantryContent(
     uiState: PantryUiState,
-    onMarkAsConsumed: (String) -> Unit
+    onMarkAsConsumed: (String) -> Unit,
+    onAddFood: () -> Unit
 ) {
     Column(modifier = Modifier.statusBarsPadding()) {
         Text(text = stringResource(R.string.pantry_title))
+        Button(onClick = onAddFood) {
+            Text(text = stringResource(R.string.pantry_add))
+        }
 
         if (uiState.items.isEmpty()) {
             Text(text = stringResource(R.string.pantry_empty))

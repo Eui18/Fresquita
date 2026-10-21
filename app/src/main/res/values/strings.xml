@@ -1,22 +1,42 @@
 <resources>
     <string name="app_name">Fresquita</string>
 
+    <!-- Inicio -->
     <string name="home_title">Resumen de tu despensa</string>
     <string name="home_available_label">Alimentos disponibles: %1$d</string>
     <string name="home_expiring_soon_label">Próximos a caducar: %1$d</string>
     <string name="home_open_pantry">Ver mi despensa</string>
 
+    <!-- despensa -->
     <string name="pantry_title">Mi despensa</string>
     <string name="pantry_empty">No hay alimentos disponibles</string>
     <string name="pantry_quantity">Cantidad: %1$s %2$s</string>
     <string name="pantry_mark_consumed">Marcar como consumido</string>
+    <string name="pantry_add">Agregar alimento</string>
 
+    <!-- categorias -->
     <string name="category_fruits">Frutas</string>
     <string name="category_vegetables">Verduras</string>
     <string name="category_refrigerated">Refrigerados</string>
     <string name="category_pantry">Despensa</string>
 
+    <!-- estados de caducidad -->
     <string name="status_valid">Vigente</string>
     <string name="status_expiring_soon">Próximo a caducar</string>
     <string name="status_expired">Caducado</string>
+
+    <!-- formulario -->
+    <string name="form_title">Agregar alimento</string>
+    <string name="form_name_label">Nombre</string>
+    <string name="form_name_error">Escribe un nombre</string>
+    <string name="form_category_label">Categoría</string>
+    <string name="form_quantity_label">Cantidad</string>
+    <string name="form_quantity_error">Escribe una cantidad mayor que cero</string>
+    <string name="form_unit_label">Unidad (piezas, litros, caja)</string>
+    <string name="form_unit_error">Escribe una unidad</string>
+    <string name="form_date_label">Fecha de caducidad (opcional)</string>
+    <string name="form_date_hint">Formato AAAA-MM-DD, por ejemplo 2026-12-31</string>
+    <string name="form_date_error">Escribe una fecha válida con formato AAAA-MM-DD</string>
+    <string name="form_save">Guardar</string>
+    <string name="form_cancel">Cancelar</string>
 </resources>

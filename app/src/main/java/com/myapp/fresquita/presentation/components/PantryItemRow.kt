@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.myapp.fresquita.R
-import com.myapp.fresquita.data.model.FoodCategory
 import com.myapp.fresquita.presentation.screens.PantryItem
 import com.myapp.fresquita.presentation.util.ExpirationStatus
+import com.myapp.fresquita.presentation.util.getCategoryText
 
 @Composable
 fun PantryItemRow(
@@ -45,15 +45,6 @@ fun PantryItemRow(
                 Text(text = stringResource(R.string.pantry_mark_consumed))
             }
         }
-    }
-}
-
-private fun getCategoryText(category: FoodCategory): Int {
-    return when (category) {
-        FoodCategory.FRUITS -> R.string.category_fruits
-        FoodCategory.VEGETABLES -> R.string.category_vegetables
-        FoodCategory.REFRIGERATED -> R.string.category_refrigerated
-        FoodCategory.PANTRY -> R.string.category_pantry
     }
 }
 

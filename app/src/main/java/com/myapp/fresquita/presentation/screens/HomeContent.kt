@@ -1,6 +1,5 @@
 package com.myapp.fresquita.presentation.screens
 
-import android.net.TetheringManager
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Button

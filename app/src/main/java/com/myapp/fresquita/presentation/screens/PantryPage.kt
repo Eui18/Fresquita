@@ -10,6 +10,7 @@ import com.myapp.fresquita.presentation.viewmodel.PantryViewModel
 
 @Composable
 fun PantryPage(
+    onAddFood: () -> Unit,
     viewModel: PantryViewModel = viewModel(
         factory = (LocalContext.current.applicationContext as FresquitaApplication)
             .appModule.pantryViewModelFactory
@@ -18,6 +19,7 @@ fun PantryPage(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PantryContent(
         uiState = uiState,
-        onMarkAsConsumed = { id -> viewModel.markAsConsumed(id) }
+        onMarkAsConsumed = { id -> viewModel.markAsConsumed(id) },
+        onAddFood = onAddFood
     )
 }

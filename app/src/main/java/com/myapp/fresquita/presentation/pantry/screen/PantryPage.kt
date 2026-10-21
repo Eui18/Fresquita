@@ -10,7 +10,7 @@ import com.myapp.fresquita.presentation.pantry.viewmodel.PantryViewModel
 
 @Composable
 fun PantryPage(
-    onAddFood: () -> Unit,
+    onEditFood: (String) -> Unit,
     viewModel: PantryViewModel = viewModel(
         factory = (LocalContext.current.applicationContext as FresquitaApplication)
             .appModule.pantryViewModelFactory
@@ -20,6 +20,9 @@ fun PantryPage(
     PantryContent(
         uiState = uiState,
         onMarkAsConsumed = { id -> viewModel.markAsConsumed(id) },
-        onAddFood = onAddFood
+        onEditFood = onEditFood,
+        onDeleteRequest = { id -> viewModel.onDeleteRequest(id)},
+        onDeleteConfirm = { viewModel.onDeleteConfirm()},
+        onDeleteCancel = { viewModel.onDeleteCancel()}
     )
 }

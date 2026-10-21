@@ -1,33 +1,61 @@
 <resources>
     <string name="app_name">Fresquita</string>
 
-    <!-- Inicio -->
+    <!-- navegación -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_pantry">Mi despensa</string>
+
+    <!-- inicio -->
+    <string name="home_greeting">¡Hola! 🍓</string>
+    <string name="home_subtitle">Tu despensa, al día.</string>
     <string name="home_title">Resumen de tu despensa</string>
-    <string name="home_available_label">Alimentos disponibles: %1$d</string>
-    <string name="home_expiring_soon_label">Próximos a caducar: %1$d</string>
-    <string name="home_open_pantry">Ver mi despensa</string>
+    <string name="home_available_label">Alimentos disponibles</string>
+    <string name="home_expiring_soon_label">Por caducar</string>
+    <string name="home_expiring_title">Próximos a caducar</string>
+    <string name="home_no_expiring">No tienes alimentos por caducar</string>
+    <string name="home_open_pantry">Ver mi despensa →</string>
 
     <!-- despensa -->
     <string name="pantry_title">Mi despensa</string>
+    <string name="pantry_subtitle">Aquí puedes consultar todo lo que tienes en casa.</string>
     <string name="pantry_empty">No hay alimentos disponibles</string>
-    <string name="pantry_quantity">Cantidad: %1$s %2$s</string>
-    <string name="pantry_mark_consumed">Marcar como consumido</string>
     <string name="pantry_add">Agregar alimento</string>
+    <string name="pantry_options">Más opciones</string>
+    <string name="pantry_edit">Editar</string>
+    <string name="pantry_mark_consumed">Marcar como consumido</string>
+    <string name="pantry_delete">Eliminar</string>
+    <string name="pantry_delete_title">Eliminar alimento</string>
+    <string name="pantry_delete_message">¿Seguro que quieres eliminarlo?</string>
+    <string name="pantry_delete_confirm">Eliminar</string>
+    <string name="pantry_delete_cancel">Cancelar</string>
 
-    <!-- categorias -->
+    <!-- alimento -->
+    <string name="food_subtitle">%1$s %2$s · %3$s</string>
+
+    <!-- categorías -->
     <string name="category_fruits">Frutas</string>
     <string name="category_vegetables">Verduras</string>
     <string name="category_refrigerated">Refrigerados</string>
     <string name="category_pantry">Despensa</string>
 
+    <!-- emojis por categoría -->
+    <string name="emoji_fruits">🍓</string>
+    <string name="emoji_vegetables">🥕</string>
+    <string name="emoji_refrigerated">🥛</string>
+    <string name="emoji_pantry">🍚</string>
+
     <!-- estados de caducidad -->
-    <string name="status_valid">Vigente</string>
+    <string name="status_valid">En buen estado</string>
     <string name="status_expiring_soon">Próximo a caducar</string>
     <string name="status_expired">Caducado</string>
+    <string name="status_with_date">%1$s · %2$s</string>
 
     <!-- formulario -->
     <string name="form_title">Agregar alimento</string>
-    <string name="form_name_label">Nombre</string>
+    <string name="form_title_edit">Editar alimento</string>
+    <string name="form_subtitle">Completa los datos de tu alimento.</string>
+    <string name="form_back">Volver</string>
+    <string name="form_name_label">Nombre del alimento</string>
     <string name="form_name_error">Escribe un nombre</string>
     <string name="form_category_label">Categoría</string>
     <string name="form_quantity_label">Cantidad</string>
@@ -37,14 +65,6 @@
     <string name="form_date_label">Fecha de caducidad (opcional)</string>
     <string name="form_date_hint">Formato AAAA-MM-DD, por ejemplo 2026-12-31</string>
     <string name="form_date_error">Escribe una fecha válida con formato AAAA-MM-DD</string>
-    <string name="form_save">Guardar</string>
+    <string name="form_save">Guardar alimento</string>
     <string name="form_cancel">Cancelar</string>
-
-    <string name="pantry_edit">Editar</string>
-    <string name="pantry_delete">Eliminar</string>
-    <string name="pantry_delete_title">Eliminar alimento</string>
-    <string name="pantry_delete_message">¿Seguro que quieres eliminarlo?</string>
-    <string name="pantry_delete_confirm">Eliminar</string>
-    <string name="pantry_delete_cancel">Cancelar</string>
-    <string name="form_title_edit">Editar alimento</string>
 </resources>

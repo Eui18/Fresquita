@@ -6,6 +6,7 @@ import com.myapp.fresquita.data.model.Food
 import com.myapp.fresquita.data.repository.FoodRepository
 import com.myapp.fresquita.presentation.home.state.HomeUiState
 import com.myapp.fresquita.presentation.common.ExpirationStatus
+import com.myapp.fresquita.presentation.common.createFoodItemUi
 import com.myapp.fresquita.presentation.common.getExpirationStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -36,14 +37,16 @@ class HomeViewModel(
     private fun updateSummary(foods: List<Food>) {
         val availableFoods = foods.filter { !it.isConsumed }
         val today = LocalDate.now()
-        val expiringSoon = availableFoods.count {
+        val expiringSoonFoods = availableFoods.filter {
             getExpirationStatus(it, today) == ExpirationStatus.EXPIRING_SOON
         }
+        val expiringItems = expiringSoonFoods.map { food -> createFoodItemUi(food, today) }
 
         _uiState.update {
             it.copy(
                 availableCount = availableFoods.size,
-                expiringSoonCount = expiringSoon
+                expiringSoonCount = expiringSoonFoods.size,
+                expiringItems = expiringItems
             )
         }
     }
